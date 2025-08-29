@@ -14,6 +14,11 @@ abstract class TrackableJob implements TrackableContract
 
     public function __construct()
     {
+        $this->trackJob();
+    }
+
+    public function trackJob(): void
+    {
         $this->trackedJob = TrackedJob::create([
             'trackable_id' => $this->trackableKey(),
             'status' => TrackedJobStatus::Created,
